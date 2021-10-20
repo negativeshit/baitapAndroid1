@@ -20,6 +20,8 @@ class Store1 extends StatefulWidget {
 
 class _Store1State extends State<Store1> {
   late Future<List<Product>> lsProduct;
+  var fKey = GlobalKey<FormState>();
+  var num = TextEditingController();
   @override
   void initState(){
     super.initState();
@@ -45,7 +47,28 @@ class _Store1State extends State<Store1> {
                  trailing: ElevatedButton(
                    child: Text('Mua'),
                    onPressed: (){
-
+                     var dialog = AlertDialog(
+                       title: Text("Nhap so luong"),
+                       content: TextField(
+                         onChanged: (value) {},
+                         controller: num,
+                         decoration: InputDecoration(
+                             hintText: "Nhap so luong "),
+                       ),
+                       actions: [
+                         FlatButton(
+                           onPressed: () {},
+                           child: Text("Khong mua"),
+                         ),
+                         FlatButton(
+                             onPressed: () {}, child: Text("Mua"))
+                       ],
+                     );
+                     showDialog(
+                         context: context,
+                         builder: (context) {
+                           return dialog;
+                         });
                    },
                  ),
                 );
